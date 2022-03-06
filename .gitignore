@@ -2,3 +2,6 @@ init.el~
 #init.el#
 elpa/**
 auto-save-list/**
+/transient/
+/projectile-bookmarks.eld
+/forge-database.sqlite
