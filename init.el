@@ -156,5 +156,42 @@
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
-(rune/leader-keys
+(pm/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Lucifer/PERSONAL/projects/practice/")
+    (setq projectile-project-search-path '("~/Lucifer/PERSONAL/projects/practice/")))
+  ;; (when (file-directory-p "~/Lucifer/PERSONAL/projects/mysite")
+  ;;   (setq projectile-project-search-path '("~/Lucifer/PERSONAL/projects/mysite")))
+  ;; (when (file-directory-p "~/Lucifer/PERSONAL/projects/fun")
+  ;;   (setq projectile-project-search-path '("~/Lucifer/PERSONAL/projects/fun")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package exec-path-from-shell
+  :init
+  (require 'exec-path-from-shell)
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+;; (use-package evil-magit
+;;  :after magit)
+
+;; NOTE: Make sure to configure a GitHub token before using this package!
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+(use-package forge)
