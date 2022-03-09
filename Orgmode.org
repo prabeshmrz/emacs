@@ -1,0 +1,72 @@
+* Introduction
+
+   * to define heading, ** for sub-heading and so on
+
+   Alt+DIRECTION_KEYS to move entire section
+
+   Cntrl+RET to create next section (heading, subheading,... doesn't work for bullets)
+
+   Alt+RET to insert next section immediately (works for bullets as well)
+
+** Inner Styles
+
+*** Bold
+
+    Wrap text by *
+
+    Here is *some* Content!
+
+*** Link
+
+    Select text and C-c C-l -> https:
+
+    Here is the [[https:orgmode.org][Org Mode homepage]]
+
+** Table
+
+    Separate the data items with | and press tab to auto adjust
+
+    |-----------+-----+-------------|
+    | Name      | Age | Uses Emaces |
+    |-----------+-----+-------------|
+    | David     |  37 | YES         |
+    | Alexander |  29 | NO          |
+    |-----------+-----+-------------|
+
+** List (Bullets)
+
+   Start line with - or number
+
+*** Unordered
+
+    - First Item
+      - Inner Item
+        - Second Inner Item
+    - Second Item
+    - Third Item
+
+*** Ordered
+
+    1. Ordered Item 1
+       1. Inner Item
+          1. Second Inner Item
+    2. Ordered Item 2
+    3. Ordered Item 3
+
+*** Checkbox
+
+    [ ] box in begining of list or Alt+Shift+RET
+
+    C-c C-x C-b to toggle checkbox
+
+    - [ ] First Item
+    - [ ] Second Item
+
+* Block
+
+#+begin_src emacs-lisp
+
+  (defun my-elisp-func ()
+    (message "Hello!"))
+
+#+end_src
