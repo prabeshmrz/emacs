@@ -1,0 +1,69 @@
+* Org Babel
+
+Execution: =C-c C-c= results(output, value)
+
+#+begin_src python :results output
+
+  def greeting():
+      return "Hello!"
+
+  print(greeting()+' World!') # results output "Hello!"
+
+  # return greeting() # result value "Hello!"
+
+#+end_src
+
+#+RESULTS:
+: Hello! World!
+
+Must register the languages that could be executed by org-babel
+
+#+begin_src emacs-lisp
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (js . t)
+     (java . t)))
+
+  (setq org-confirm-babel-evaluate nil)
+
+#+end_src
+
+** Structure Template
+
+#+begin_src emacs-lisp
+
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("jv" . "src java"))
+  (add-to-list 'org-structure-template-alist '("js" . "src js"))
+  (add-to-list 'org-structure-template-alist '("lu" . "src lua"))
+
+#+end_src
+
+#+begin_src java :classname Test1 :imports java.util.List
+  import java.util.List;
+  import java.util.Arrays;
+  public class Test1{
+      public static void main(String[] args){
+          List<Integer> a = Arrays.asList(1, 2);
+          System.out.println(a);
+      }
+  }
+#+end_src
+
+#+RESULTS:
+| [1 | 2] |
+
+#+begin_src js
+console.log("hello")
+#+end_src
+
+#+RESULTS:
+: hello
+: undefined
