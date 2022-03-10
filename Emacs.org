@@ -1,4 +1,4 @@
-#+title Prabesh Emacs Configuration
+#+TITLE: Prabesh Emacs Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
 * Package System Setup
